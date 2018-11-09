@@ -1,0 +1,12 @@
+@font-face {
+   font-family: 'InterUIExtraBold';
+   src: local('InterUIExtraBold'),
+   url(../../design/Inter-UI-ExtraBold.woff) format('woff');
+
+}
+
+@font-face {
+      font-family: 'InterUIRegular';
+      src: local('InterUIRegular'),
+      url(../../design/Inter-UI-Regular.woff) format('woff');
+}
