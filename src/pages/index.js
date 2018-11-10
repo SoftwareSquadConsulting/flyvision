@@ -1,13 +1,3 @@
-/* eslint-disable semi,react/jsx-indent */
-/*
- * NOTE: The Babel plugin will automatically process the `tw()` function, which
- * means we don’t actually need to import it. ESLint will complain about this,
- * however, so we need to add `tw` as a global variable.
- */
-
-/* global tw */
-
-//global emotion
 import { injectGlobal } from 'emotion'
 //libraries
 import React from 'react'
@@ -61,13 +51,13 @@ const Body = styled('div')`
     background-repeat:no-repeat;
     background-size: cover;
 
-    padding: 80px 0;
+    padding: 40px 0;
 `;
 const Benefits = styled('div')`
     // background: url(${bgBenefits});
     background-repeat:no-repeat;
     background-size: cover;
-    padding: 80px 0;
+    padding: 40px 0;
 `;
 
 const Footer = styled('div')` ${ tw('bg-blue')}`;
@@ -76,7 +66,11 @@ const Footer = styled('div')` ${ tw('bg-blue')}`;
 //logo
 const Container = styled('div')`
     ${tw('flex justify-center mb-4')};
-    img {margin:50px;}
+    img {
+        margin:50px; 
+        height: 100%;
+        width: 100%;
+        }
     background: #fff;
     filter: invert(1);
     margin: 0;
@@ -138,6 +132,18 @@ const Paragraph = styled('p')`${tw('text-sm')};
     margin: ${props=>props.margin};
     color: ${props => props.color};
     font-size: ${props=>props.fs};
+    line-height: ${props=>props.lh};
+
+    a {
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+        transition: 0.9s;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
 `;
 
 const HeaderContainer = styled('div')`
@@ -145,7 +151,7 @@ const HeaderContainer = styled('div')`
     flex-wrap: no-wrap;
     padding: ${props => props.padding};
     justify-content: ${props => props.justify};
-
+    margin: ${props => props.margin};
     p {
         margin: 0;
     }
@@ -178,8 +184,8 @@ p {
 
 const Portfolio = styled('div')`
     ${tw('flex flex-wrap justify-around') };
-    background: #3490dcdd;
-
+    background: #3490dc;
+    padding: 30px 0 10px 0;
     // margin: 20px 0;
 
     img {
@@ -192,7 +198,7 @@ const Portfolio = styled('div')`
 const Photo = styled('div')`
     img {
         border-radius: 3px;
-        box-shadow: 0 3px 3px #dddddd;
+        box-shadow: 0 5px 5px #dddddd;
     }
     
     margin: 35px;
@@ -201,7 +207,10 @@ const Photo = styled('div')`
 
 const Divider = styled('div')`
     font-size: ${props=>props.fs};
-    color: ${props=>props.color};
+    background-color: ${props=>props.color};
+    margin: 0 12px;
+    width: 3px;
+    border-radius: 2px;
 `;
 
 const InquireForm = styled('form')` ${ tw('w-full max-w-sm') };
@@ -246,7 +255,7 @@ export default () => (
             <Container>
                 <img src={logo} />
             </Container>
-            <Video controls autoplay muted loop>
+            <Video autoPlay muted loop>
                 <source src={headerVideo} type="video/mp4"/>
                 Your browser does not support HTML5 video.
 			</Video>
@@ -264,62 +273,45 @@ export default () => (
                     <img src={background} />
                 </HeroContent>
             </Hero>
-
-            {/* <PhotoGrid margin="-20px 0 80px 0">
-                <Photo>
-                    <img src={photo1} />
-                </Photo>
-                <Photo>
-                    <img src={photo2} />
-                </Photo>
-                <Photo>
-                    <img src={photo3} />
-                </Photo>
-                <Photo>
-                    <img src={photo4} />
-                </Photo>
-            </PhotoGrid> */}
         </Header>
 
         <Body>
 
             <HeaderContainer justify="center">
                 <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Visual</ParagraphHeader>
-                <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
-
+                <Divider color='#000'></Divider>
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Options</ParagraphHeader>
             </HeaderContainer>
 
-            <Paragraph ta="center" fs="22px" margin="40px 0">
-                Each display can be configured into four (4) options.<br />
-                The options are... 1-Sided, 2-Sided, 4-Sided and LCD incorporated.
+            <Paragraph ta="center" fs="22px" margin="40px 0 15px 0">
+                Each display can be configured into four options.
             </Paragraph>
 
             <PhotoGrid>
                 <Photo>
                     <img src={photo5} />
-                    <HeaderContainer justify="center" margin="5px 0px">
+                    <HeaderContainer justify="center" margin="25px 0px">
                         <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">1&nbsp;</ParagraphHeader>
                         <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
                     </HeaderContainer>
                 </Photo>
                 <Photo>
                     <img src={photo6} />
-                    <HeaderContainer justify="center" margin="5px 0px">
+                    <HeaderContainer justify="center" margin="25px 0px">
                         <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">2&nbsp;</ParagraphHeader>
                         <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
                     </HeaderContainer>
                 </Photo>
                 <Photo>
                     <img src={photo7} />
-                    <HeaderContainer justify="center" margin="5px 0px">
+                    <HeaderContainer justify="center" margin="25px 0px">
                         <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">4&nbsp;</ParagraphHeader>
                         <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
                     </HeaderContainer>
                 </Photo>
                 <Photo>
                     <img src={photo8} />
-                    <HeaderContainer justify="center" margin="5px 0px">
+                    <HeaderContainer justify="center" margin="25px 0px">
                         <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">LCD&nbsp;</ParagraphHeader>
                         <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Incorporated</ParagraphHeader>
                     </HeaderContainer>
@@ -330,13 +322,14 @@ export default () => (
         <Benefits>
             <HeaderContainer justify="center">
                 <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Benefits</ParagraphHeader>
-                <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
+                <Divider color='#000'></Divider>
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Features</ParagraphHeader>
             </HeaderContainer>
-            <Paragraph ta="center" margin="40px" fs="24px">FlyVision is a 21st Century technology based company that
-                offers unique and innovative display solutions designed to
-                drive incremental sales at the point of purchase.</Paragraph>
-
+            <Paragraph ta="center" margin="40px 100px" fs="24px">FlyVision is a 21st Century technology based company that
+                offers unique and innovative.<br />
+                display solutions designed to
+                drive incremental sales at the point of purchase.
+            </Paragraph>
             <Icons>
                 <Box>
                     <Octicon icon={Gift} size="large" />
@@ -363,14 +356,23 @@ export default () => (
                     <p>FlyVision currently operating in 6 markets</p>
                 </Box>
             </Icons>
+        </Benefits>
 
-            {/* <HeaderContainer justify="center" padding="80px 0 20px 0">
-                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Client</ParagraphHeader>
-                <Divider fs="2.5rem">&nbsp;|&nbsp;</Divider>
-
-                <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Testimonials</ParagraphHeader>
-            </HeaderContainer> */}
-
+        <HeaderContainer justify="center" margin='-20px 0 40px 0'>
+                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Our</ParagraphHeader>
+                <Divider color='#000'></Divider>
+                <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Info</ParagraphHeader>
+            </HeaderContainer>
+        <HeaderContainer justify="center" margin="50px 0 140px 0" fDirection="column">
+            <Paragraph ta="center" margin="40px 100px" fs="24px">
+                <a href='mailto:don@flyvisionusa.com'>inquiries@flyvisionusa.com</ a>
+                <br /><br /> 
+                (361) 353-8283<br /><br />
+                1415 SW 21st Avenue<br /> Fort Lauderdale,
+                FL 33312 USA
+            </Paragraph>
+        </HeaderContainer>
+        <Footer>
             <Portfolio>
                 <img src={christian} />
                 <img src={hublot} />
@@ -378,42 +380,9 @@ export default () => (
                 <img src={swarovski} />
                 <img src={telenor} />
             </Portfolio>
-
-        </Benefits>
-
-        <HeaderContainer justify="center" margin="50px 250px">
-            <ParagraphHeader ff="InterUIRegular" fs="2rem">Need Assistance?</ParagraphHeader>
-        </HeaderContainer>
-
-        <InquireForm name="contact" method="POST" netlify-honeypot="bot-field" netlify>
-            <InquireDiv>
-                <InquireInput padding=".75rem 3rem" margin="2rem .5rem 0 .5rem" name="bot-field" type="text" placeholder="Name" aria-label="Full name" />
-                <InquireInput padding=".75rem 3rem" margin="2rem .5rem 0 .5rem" name="bot-field" type="text" placeholder="Email" aria-label="Email" />
-            </InquireDiv>
-            <InquireDiv>
-                <InquireInput padding=".75rem 3rem" margin="2rem .5rem 0 .5rem" name="bot-field" type="text" placeholder="Subject" aria-label="Subject" />
-            </InquireDiv>
-            <InquireDiv>
-                <InquireInput padding=".75rem 3rem" margin="4rem 2.5rem 0 .5rem" name="bot-field" type="text" placeholder="Message" aria-label="Message" />
-            </InquireDiv>
-            <BlueButton type="submit">SEND</BlueButton>
-        </InquireForm>
-
-        <Footer>
-            <HeaderContainer justify="center" margin="50px" padding="50px">
-                <ParagraphHeader ff="InterUIExtraBold" fs="2rem" color="white">Subscribe</ParagraphHeader>
-                <Divider fs="2.5rem" color="white">&nbsp;|&nbsp;</Divider>
-                <ParagraphHeader ff="InterUIRegular" fs="2rem" color="white">New Offers & Products</ParagraphHeader>
-            </HeaderContainer>
-            <Paragraph ta="center" padding="25px 250px" color="white">FlyVision is a 21st Century technology based company that
+            <Paragraph ta="center" padding="25px 250px" color="white" margin='0'>FlyVision is a 21st Century technology based company that
                 offers unique and innovative display solutions designed to
                 drive incremental sales at the point of purchase.</Paragraph>
-
-            <InquireForm name="contact" method="POST" netlify-honeypot="bot-field" netlify>
-                <InquireDiv>
-                    <InquireInput padding=".75rem 3rem" margin="2rem .5rem 0 .5rem" name="bot-field" type="text" placeholder="Name" aria-label="Full name" />
-                </InquireDiv>
-            </InquireForm>
         </Footer>
 
     </React.Fragment>
