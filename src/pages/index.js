@@ -57,14 +57,14 @@ margin: 0;
 const Header = styled('div')`
 `;
 const Body = styled('div')`
-    background: url(${bgWhite});
+    // background: url(${bgWhite});
     background-repeat:no-repeat;
     background-size: cover;
 
     padding: 80px 0;
 `;
 const Benefits = styled('div')`
-    background: url(${bgBenefits});
+    // background: url(${bgBenefits});
     background-repeat:no-repeat;
     background-size: cover;
     padding: 80px 0;
@@ -74,8 +74,13 @@ const Footer = styled('div')` ${ tw('bg-blue')}`;
 
 
 //logo
-const Container = styled('div')`${tw('flex justify-center mb-4')};
-img {margin:50px;}`;
+const Container = styled('div')`
+    ${tw('flex justify-center mb-4')};
+    img {margin:50px;}
+    background: #fff;
+    filter: invert(1);
+    margin: 0;
+`;
 
 //body
 const Hero = styled('div')`
@@ -85,6 +90,8 @@ const Hero = styled('div')`
 
     p {
         font-family: InterUIRegular;
+        margin: 0;
+        margin-top: 16px;
     }
 
     img {
@@ -95,15 +102,16 @@ const Hero = styled('div')`
 
 //
 const HeroContent = styled('div')`
-    ${tw('flex align-center')};
-    justify-content: ${props=>props.justify};
-    // margin: 80px;
+    ${tw('flex')};
+    justify-content: ${props => props.justify};
+    align-items: center;
+    font-size: 18px;
     box-sizing: border-box;
 `;
 //photos
 const PhotoGrid = styled('div')`
     ${tw('flex justify-center flex-wrap')};
-    margin-top: 50px;
+    margin: ${props => props.margin};
     img {
         max-width: 220px;
     }
@@ -112,6 +120,7 @@ const PhotoGrid = styled('div')`
 const HeaderImage = styled('img')`
     ${tw('w-1/4 mt-8 flex-none')};
     min-width: 300px;
+    margin: 0;
 `;
 
 const BlueButton = styled('button')`
@@ -126,7 +135,7 @@ const Paragraph = styled('p')`${tw('text-sm')};
     font-family: InterUIRegular;
     text-align: ${props=>props.ta};
     padding: ${props=>props.padding};
-    margin: 0;
+    margin: ${props=>props.margin};
     color: ${props => props.color};
     font-size: ${props=>props.fs};
 `;
@@ -134,9 +143,12 @@ const Paragraph = styled('p')`${tw('text-sm')};
 const HeaderContainer = styled('div')`
     display: flex;
     flex-wrap: no-wrap;
-
     padding: ${props => props.padding};
     justify-content: ${props => props.justify};
+
+    p {
+        margin: 0;
+    }
 `;
 
 const ParagraphHeader = styled('div')` ${ tw('uppercase')};
@@ -150,7 +162,10 @@ const Icons = styled('div')`
     margin: 80px 0;
 `;
 
-const Box = styled('div')`${tw('flex flex-wrap justify-center w-1/3')};
+const Box = styled('div')`
+${tw('flex flex-wrap justify-center w-1/3')};
+margin: 40px 0;
+
 svg {
     width: 100%;
 }
@@ -165,6 +180,8 @@ const Portfolio = styled('div')`
     ${tw('flex flex-wrap justify-around') };
     background: #3490dcdd;
 
+    // margin: 20px 0;
+
     img {
         width: 15%;
         height: 100px;
@@ -173,7 +190,13 @@ const Portfolio = styled('div')`
 `;
 
 const Photo = styled('div')`
+    img {
+        border-radius: 3px;
+        box-shadow: 0 3px 3px #dddddd;
+    }
+    
     margin: 35px;
+    overflow: hidden;
 `;
 
 const Divider = styled('div')`
@@ -229,7 +252,7 @@ export default () => (
 			</Video>
             <Hero>
                 <HeroContent justify="center">
-                    <div style={{"padding-left": "40px"}}>
+                    <div>
                         <HeaderImage src={header} />
                         <p>Revolutionary new display platform providing
                             <br /> the ultimate in product presentation;
@@ -242,8 +265,7 @@ export default () => (
                 </HeroContent>
             </Hero>
 
-            <PhotoGrid>
-
+            {/* <PhotoGrid margin="-20px 0 80px 0">
                 <Photo>
                     <img src={photo1} />
                 </Photo>
@@ -256,20 +278,22 @@ export default () => (
                 <Photo>
                     <img src={photo4} />
                 </Photo>
-            </PhotoGrid>
+            </PhotoGrid> */}
         </Header>
 
         <Body>
 
-            <HeaderContainer justify="center" margin="0px 250px" padding="50px 0px 50px 0px">
-                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem" margin="50px 250px">Visual</ParagraphHeader>
+            <HeaderContainer justify="center">
+                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Visual</ParagraphHeader>
                 <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
 
-                <ParagraphHeader ff="InterUIRegular" fs="2.5rem" margin="50px 250px">Options</ParagraphHeader>
+                <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Options</ParagraphHeader>
             </HeaderContainer>
 
-            <Paragraph ta="center" fs="22px">Each display can be configured into four (4) options.<br />
-                The options are... 1-Sided, 2-Sided, 4-Sided and LCD incorporated.</Paragraph>
+            <Paragraph ta="center" fs="22px" margin="40px 0">
+                Each display can be configured into four (4) options.<br />
+                The options are... 1-Sided, 2-Sided, 4-Sided and LCD incorporated.
+            </Paragraph>
 
             <PhotoGrid>
                 <Photo>
@@ -304,12 +328,12 @@ export default () => (
         </Body>
 
         <Benefits>
-            <HeaderContainer justify="center" margin="0px 250px" padding="50px 0px 50px 0px">
+            <HeaderContainer justify="center">
                 <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Benefits</ParagraphHeader>
                 <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Features</ParagraphHeader>
             </HeaderContainer>
-            <Paragraph ta="left" padding="25px 250px" fs="24px">FlyVision is a 21st Century technology based company that
+            <Paragraph ta="center" margin="40px" fs="24px">FlyVision is a 21st Century technology based company that
                 offers unique and innovative display solutions designed to
                 drive incremental sales at the point of purchase.</Paragraph>
 
