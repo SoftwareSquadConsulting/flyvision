@@ -1,13 +1,3 @@
-/* eslint-disable semi,react/jsx-indent */
-/*
- * NOTE: The Babel plugin will automatically process the `tw()` function, which
- * means we don’t actually need to import it. ESLint will complain about this,
- * however, so we need to add `tw` as a global variable.
- */
-
-/* global tw */
-
-//global emotion
 import { injectGlobal } from 'emotion'
 //libraries
 import React from 'react'
@@ -283,21 +273,6 @@ export default () => (
                     <img src={background} />
                 </HeroContent>
             </Hero>
-
-            {/* <PhotoGrid margin="-20px 0 80px 0">
-                <Photo>
-                    <img src={photo1} />
-                </Photo>
-                <Photo>
-                    <img src={photo2} />
-                </Photo>
-                <Photo>
-                    <img src={photo3} />
-                </Photo>
-                <Photo>
-                    <img src={photo4} />
-                </Photo>
-            </PhotoGrid> */}
         </Header>
 
         <Body>
@@ -381,16 +356,6 @@ export default () => (
                     <p>FlyVision currently operating in 6 markets</p>
                 </Box>
             </Icons>
-
-            {/* <HeaderContainer justify="center" padding="80px 0 20px 0">
-                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Client</ParagraphHeader>
-                <Divider fs="2.5rem">&nbsp;|&nbsp;</Divider>
-
-                <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Testimonials</ParagraphHeader>
-            </HeaderContainer> */}
-
-            
-
         </Benefits>
 
         <HeaderContainer justify="center" margin='-20px 0 40px 0'>
@@ -399,7 +364,6 @@ export default () => (
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Info</ParagraphHeader>
             </HeaderContainer>
         <HeaderContainer justify="center" margin="50px 0 140px 0" fDirection="column">
-            {/* <a href='mailto:don@flyvisionusa.com'>inquiries@flyvisionusa.com</ a> */}
             <Paragraph ta="center" margin="40px 100px" fs="24px">
                 <a href='mailto:don@flyvisionusa.com'>inquiries@flyvisionusa.com</ a>
                 <br /><br /> 
@@ -407,7 +371,6 @@ export default () => (
                 1415 SW 21st Avenue<br /> Fort Lauderdale,
                 FL 33312 USA
             </Paragraph>
-            {/* <a href='mailto:don@flyvisionusa.com'>inquiries@flyvisionusa.com</ a> */}
         </HeaderContainer>
         <Footer>
             <Portfolio>
