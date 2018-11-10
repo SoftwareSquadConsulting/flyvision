@@ -8,15 +8,15 @@
 /* global tw */
 
 //global emotion
- import { injectGlobal } from 'emotion'
+import { injectGlobal } from 'emotion'
 //libraries
 import React from 'react'
 import styled from 'react-emotion'
 // design components
 import logo from '../images/flyvision-logo.svg'
 import header from '../images/header.svg'
-import background from '../images/background.jpg'
-import bgWhite from '../images/bg-white.svg'
+import background from '../images/background.png'
+import bgWhite from '../images/bg-white.png'
 import bgBenefits from '../images/bg-benefits.svg'
 import './index.css'
 //images
@@ -34,6 +34,8 @@ import hublot from '../portfolio/hublot.svg'
 import samsung from '../portfolio/samsung.svg'
 import swarovski from '../portfolio/swarovski.svg'
 import telenor from '../portfolio/telenor.svg'
+
+import headerVideo from '../images/FlyvisionReCut.mp4'
 
 //icons
 import Octicon,{
@@ -53,14 +55,13 @@ margin: 0;
 
 //background
 const Header = styled('div')`
-    background: url(${background});
-    background-repeat:no-repeat;
-    background-size: cover;
 `;
 const Body = styled('div')`
     background: url(${bgWhite});
     background-repeat:no-repeat;
     background-size: cover;
+
+    padding: 80px 0;
 `;
 const Benefits = styled('div')`
     background: url(${bgBenefits});
@@ -77,42 +78,57 @@ const Container = styled('div')`${tw('flex justify-center mb-4')};
 img {margin:50px;}`;
 
 //body
-const Hero = styled('div')`${tw('flex flex-wrap w-1/3')};
-margin-top: 100px;
-margin-left: 200px;
-margin-bottom: 150px;
-img {
-min-width: 300px;
-}
-p {
-font-family: InterUIRegular;
-}
-`;
-//photos
-const PhotoGrid = styled('div')`${tw('flex justify-center flex-wrap')};
-img {
-    max-width: 220px;
-}
+const Hero = styled('div')`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr) );
+    margin: 120px 0;
+
+    p {
+        font-family: InterUIRegular;
+    }
+
+    img {
+        max-width: 1fr;
+    }
+
 `;
 
-const HeaderImage = styled('img')`${tw('w-1/4 mt-8 flex-none' )};`;
+//
+const HeroContent = styled('div')`
+    ${tw('flex align-center')};
+    justify-content: ${props=>props.justify};
+    // margin: 80px;
+    box-sizing: border-box;
+`;
+//photos
+const PhotoGrid = styled('div')`
+    ${tw('flex justify-center flex-wrap')};
+    margin-top: 50px;
+    img {
+        max-width: 220px;
+    }
+`;
+
+const HeaderImage = styled('img')`
+    ${tw('w-1/4 mt-8 flex-none')};
+    min-width: 300px;
+`;
 
 const BlueButton = styled('button')`
     ${tw('flex-initial bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full')};
 `;
-
-
 
 const VideoButton = styled('button')`${tw('flex-initial font-bold hover:bg-grey leading-normal px-4 py-1 rounded-full text-xs')};`;
 
 const Buttons = styled('div')`${tw('flex justify-center')};`;
 
 const Paragraph = styled('p')`${tw('text-sm')};
-font-family: InterUIRegular;
-text-align: ${props=>props.ta};
-padding: ${props=>props.padding};
-margin: 0;
-color: ${props=>props.color};
+    font-family: InterUIRegular;
+    text-align: ${props=>props.ta};
+    padding: ${props=>props.padding};
+    margin: 0;
+    color: ${props => props.color};
+    font-size: ${props=>props.fs};
 `;
 
 const HeaderContainer = styled('div')`
@@ -123,20 +139,16 @@ const HeaderContainer = styled('div')`
     justify-content: ${props => props.justify};
 `;
 
-const ClientsHeaderContainer = styled('div')`
-    display: flex;
-    flex-wrap: no-wrap;
-    margin: 100px 0;
-    justify-content: ${props => props.justify};
-`;
-
 const ParagraphHeader = styled('div')` ${ tw('uppercase')};
-font-family: ${props=>props.ff};
-font-size: ${props=>props.fs};
-color: ${props => props.color};
+    font-family: ${props=>props.ff};
+    font-size: ${props=>props.fs};
+    color: ${props => props.color};
 `;
 
-const Icons = styled('div')` ${tw('flex flex-wrap items-center justify-center')};`;
+const Icons = styled('div')`
+    ${tw('flex flex-wrap items-center justify-center')};
+    margin: 80px 0;
+`;
 
 const Box = styled('div')`${tw('flex flex-wrap justify-center w-1/3')};
 svg {
@@ -149,21 +161,24 @@ p {
 }
 `;
 
-const Portfolio = styled('div')`${tw('flex flex-wrap justify-around bg-blue') };
-img {
-    width: 15%;
-    height: 100px;
-    margin: 20px;
-}
+const Portfolio = styled('div')`
+    ${tw('flex flex-wrap justify-around') };
+    background: #3490dcdd;
+
+    img {
+        width: 15%;
+        height: 100px;
+        margin: 20px;
+    }
 `;
 
 const Photo = styled('div')`
-margin: 15px;
+    margin: 35px;
 `;
 
 const Divider = styled('div')`
-font-size: ${props=>props.fs};
-color: ${props=>props.color};
+    font-size: ${props=>props.fs};
+    color: ${props=>props.color};
 `;
 
 const InquireForm = styled('form')` ${ tw('w-full max-w-sm') };
@@ -196,6 +211,11 @@ const InquireInput = styled('input')`
     margin: ${props => props.margin};
 `;
 
+const Video = styled('video')`
+  width: 100%;
+  height: auto;
+`;
+
 
 export default () => (
     <React.Fragment>
@@ -203,20 +223,23 @@ export default () => (
             <Container>
                 <img src={logo} />
             </Container>
+            <Video controls autoplay muted loop>
+                <source src={headerVideo} type="video/mp4"/>
+                Your browser does not support HTML5 video.
+			</Video>
             <Hero>
-                <HeaderImage src={header} />
-                <p>Revolutionary new display platform providing
-                    <br /> the ultimate in product presentation;
-                    <br />envisioning the future of display marketing.
-                </p>
-                <Buttons>
-                    <BlueButton>
-                        LEARN MORE
-                    </BlueButton>
-                    <VideoButton>
-                        WATCH THE VIDEO
-                    </VideoButton>
-                </Buttons>
+                <HeroContent justify="center">
+                    <div style={{"padding-left": "40px"}}>
+                        <HeaderImage src={header} />
+                        <p>Revolutionary new display platform providing
+                            <br /> the ultimate in product presentation;
+                            <br />envisioning the future of display marketing.
+                        </p>
+                    </div>
+                </HeroContent>
+                <HeroContent justify="center">
+                    <img src={background} />
+                </HeroContent>
             </Hero>
 
             <PhotoGrid>
@@ -238,56 +261,55 @@ export default () => (
 
         <Body>
 
-        <HeaderContainer justify="center" margin="0px 250px" padding="50px 0px 50px 0px">
-            <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem" margin="50px 250px">Visual</ParagraphHeader>
-            <Divider fs="2.5rem">&nbsp;|&nbsp;</Divider>
+            <HeaderContainer justify="center" margin="0px 250px" padding="50px 0px 50px 0px">
+                <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem" margin="50px 250px">Visual</ParagraphHeader>
+                <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
 
-            <ParagraphHeader ff="InterUIRegular" fs="2.5rem" margin="50px 250px">Options</ParagraphHeader>
-        </HeaderContainer>
+                <ParagraphHeader ff="InterUIRegular" fs="2.5rem" margin="50px 250px">Options</ParagraphHeader>
+            </HeaderContainer>
 
-        <PhotoGrid>
-            <Photo>
-                <img src={photo5} />
-                <HeaderContainer justify="center" margin="5px 0px">
-                    <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">1&nbsp;</ParagraphHeader>
-                    <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
-                </HeaderContainer>
-            </Photo>
-            <Photo>
-                <img src={photo6} />
-                <HeaderContainer justify="center" margin="5px 0px">
-                    <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">2&nbsp;</ParagraphHeader>
-                    <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
-                </HeaderContainer>
-            </Photo>
-            <Photo>
-                <img src={photo7} />
-                <HeaderContainer justify="center" margin="5px 0px">
-                    <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">4&nbsp;</ParagraphHeader>
-                    <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
-                </HeaderContainer>
-            </Photo>
-            <Photo>
-                <img src={photo8} />
-                <HeaderContainer justify="center" margin="5px 0px">
-                    <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">LCD&nbsp;</ParagraphHeader>
-                    <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Incorporated</ParagraphHeader>
-                </HeaderContainer>
-            </Photo>
-        </PhotoGrid>
+            <Paragraph ta="center" fs="22px">Each display can be configured into four (4) options.<br />
+                The options are... 1-Sided, 2-Sided, 4-Sided and LCD incorporated.</Paragraph>
 
-
-        <Paragraph ta="center">Each display can be configured into four (4) options.<br />
-            The options are... 1-Sided, 2-Sided, 4-Sided and LCD incorporated.</Paragraph>
+            <PhotoGrid>
+                <Photo>
+                    <img src={photo5} />
+                    <HeaderContainer justify="center" margin="5px 0px">
+                        <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">1&nbsp;</ParagraphHeader>
+                        <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
+                    </HeaderContainer>
+                </Photo>
+                <Photo>
+                    <img src={photo6} />
+                    <HeaderContainer justify="center" margin="5px 0px">
+                        <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">2&nbsp;</ParagraphHeader>
+                        <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
+                    </HeaderContainer>
+                </Photo>
+                <Photo>
+                    <img src={photo7} />
+                    <HeaderContainer justify="center" margin="5px 0px">
+                        <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">4&nbsp;</ParagraphHeader>
+                        <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Sided</ParagraphHeader>
+                    </HeaderContainer>
+                </Photo>
+                <Photo>
+                    <img src={photo8} />
+                    <HeaderContainer justify="center" margin="5px 0px">
+                        <ParagraphHeader ff="InterUIExtraBold" fs="1.25rem">LCD&nbsp;</ParagraphHeader>
+                        <ParagraphHeader ff="InterUIRegular" fs="1.25rem">| Incorporated</ParagraphHeader>
+                    </HeaderContainer>
+                </Photo>
+            </PhotoGrid>
         </Body>
 
         <Benefits>
             <HeaderContainer justify="center" margin="0px 250px" padding="50px 0px 50px 0px">
                 <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Benefits</ParagraphHeader>
-                <Divider fs="2.5rem">&nbsp;|&nbsp;</Divider>
+                <Divider fs="3.5rem">&nbsp;|&nbsp;</Divider>
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Features</ParagraphHeader>
             </HeaderContainer>
-            <Paragraph ta="left" padding="25px 250px">FlyVision is a 21st Century technology based company that
+            <Paragraph ta="left" padding="25px 250px" fs="24px">FlyVision is a 21st Century technology based company that
                 offers unique and innovative display solutions designed to
                 drive incremental sales at the point of purchase.</Paragraph>
 
@@ -318,12 +340,12 @@ export default () => (
                 </Box>
             </Icons>
 
-            <HeaderContainer justify="center" padding="80px 0 20px 0">
+            {/* <HeaderContainer justify="center" padding="80px 0 20px 0">
                 <ParagraphHeader ff="InterUIExtraBold" fs="2.5rem">Client</ParagraphHeader>
                 <Divider fs="2.5rem">&nbsp;|&nbsp;</Divider>
 
                 <ParagraphHeader ff="InterUIRegular" fs="2.5rem">Testimonials</ParagraphHeader>
-            </HeaderContainer>
+            </HeaderContainer> */}
 
             <Portfolio>
                 <img src={christian} />
