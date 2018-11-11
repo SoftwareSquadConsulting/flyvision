@@ -9,7 +9,7 @@
     "predevelop": "postcss tailwind.css -o tailwind.custom.css",
     "prebuild": "postcss tailwind.css -o tailwind.custom.css",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -b master -d build"
   },
   "homepage": "https://softwaresquadconsulting.github.io/",
   "dependencies": {
