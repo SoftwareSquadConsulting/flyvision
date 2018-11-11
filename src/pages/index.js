@@ -60,7 +60,11 @@ const Benefits = styled('div')`
     padding: 40px 0;
 `;
 
-const Footer = styled('div')` ${ tw('bg-blue')}`;
+const Footer = styled('div')` 
+    ${ tw('bg-blue')}
+    background-color: #000
+`
+;
 
 
 //logo
@@ -184,7 +188,7 @@ p {
 
 const Portfolio = styled('div')`
     ${tw('flex flex-wrap justify-around') };
-    background: #3490dc;
+    background: #000;
     padding: 30px 0 10px 0;
     // margin: 20px 0;
 
